@@ -1,0 +1,19 @@
+
+name: Test GitHub Hosted Runner
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check runner
+        run: |
+          echo "GitHub-hosted runner is working"
+          uname -a
+          df -h
+          free -h
