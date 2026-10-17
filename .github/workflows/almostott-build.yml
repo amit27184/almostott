@@ -1,0 +1,26 @@
+
+name: AlmostOTT Build Preparation
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout AlmostOTT
+        uses: actions/checkout@v4
+
+      - name: Inspect build requirements
+        run: |
+          echo "Repository checked out successfully"
+          git rev-parse --short HEAD
+          echo "Disk space:"
+          df -h /
+          echo "Memory:"
+          free -h
+          echo "Build workflow:"
+          sed -n '1,220p' .github/workflows/build_cromite.yaml
